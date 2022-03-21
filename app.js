@@ -1,3 +1,5 @@
+const dotenv = require('dotenv')
+dotenv.config()
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
@@ -6,13 +8,14 @@ const expressSession = require('express-session');
 const SessionFileStore = require('session-file-store')(expressSession);
 const bcrypt = require('bcrypt');
 
+
 const PORT = process.env.PORT ?? 3000;
 const app = express();
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.listen(PORT, () => {
-  console.log('Сервер работает :)', PORT);
+  console.log('Сервер работает', PORT);
 });
 
 const sessionConfig = {
